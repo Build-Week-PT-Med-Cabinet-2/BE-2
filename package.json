@@ -1,0 +1,31 @@
+{
+  "name": "be-2",
+  "version": "1.0.0",
+  "description": "MedCabinet Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Build-Week-PT-Med-Cabinet-2/BE-2.git"
+  },
+  "author": "steven oakley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Build-Week-PT-Med-Cabinet-2/BE-2/issues"
+  },
+  "homepage": "https://github.com/Build-Week-PT-Med-Cabinet-2/BE-2#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.6",
+    "pg": "^8.4.1"
+  },
+  "devDependencies": {
+    "jest": "^26.5.3"
+  }
+}
