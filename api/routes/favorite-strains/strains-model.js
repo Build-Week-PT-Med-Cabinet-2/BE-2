@@ -25,7 +25,7 @@ function findBy(filter) {
 }
 
 function findById(id) {
-    return db('strains').where('user-id',id)
+    return db('strains').where('user_id',id)
 }
 
 function update(id, changes) {
