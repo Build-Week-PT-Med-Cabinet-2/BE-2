@@ -28,10 +28,11 @@ function findById(id) {
     return db('users').where({id}).first();
 }
 
-function update(id, changes) {
-    return db('users')
+async function update(id, changes) {
+    const newUser = db('users')
       .where({ id })
       .update(changes);
+      return findById(id)
   }
   
 function remove(id) {
