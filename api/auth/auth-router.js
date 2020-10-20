@@ -21,9 +21,7 @@ const genToken = (user) => {
       User.add({
         username:user.username,
         password: hash,
-        firstname: user.first-name,
-        lastname: user.last-name,
-        email: user.email,
+        ...user
       })
       .then(success => {
         const token = genToken(success)

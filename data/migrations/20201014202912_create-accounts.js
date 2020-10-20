@@ -10,9 +10,9 @@ exports.up = function(knex) {
         .string('password', 255)
         .notNullable();
       users
-        .string('firstname',64);
+        .string('first_name',64);
       users
-        .string('lastname', 64);
+        .string('last_name', 64);
       users
         .string('email',255);
     });
