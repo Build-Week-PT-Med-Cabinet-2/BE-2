@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) =>{ 
-    let newBody = Object.assign(req.body,{'user-id': req.decodedJwt.userid})
+    let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid})
     strains.add(newBody)
         .then( response => res.status(200).json(response))
         .catch(

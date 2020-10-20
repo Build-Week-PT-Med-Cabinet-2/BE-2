@@ -8,22 +8,22 @@ exports.up = function(knex) {
             .unique()
             .notNullable();
     strains
-        .string('Type', 64)
+        .string('type', 64)
             .notNullable();
     strains
-        .integer('Raiting');
+        .integer('raiting');
     strains
-        .string('Effects')
+        .string('effects')
             .notNullable();
     strains
-        .string('Flavor')
+        .string('flavor')
             .notNullable();
     strains 
-        .text('Description')
+        .text('description')
             .notNullable();    
             
     strains
-        .integer('user-id')
+        .integer('user_id')
         .unsigned()
             .notNullable()
             .references("id")
