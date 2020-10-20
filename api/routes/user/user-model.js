@@ -29,10 +29,9 @@ function findById(id) {
 }
 
 async function update(id, changes) {
-    const newUser = db('users')
+     return db('users')
       .where({ id })
       .update(changes);
-      return findById(id)
   }
   
 function remove(id) {
