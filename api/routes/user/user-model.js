@@ -35,7 +35,9 @@ function findById(id) {
 function update(id, changes) {
      return db('users')
       .where({ id })
-      .update(changes);
+      .update(changes)
+      .returning('users')
+      .where({id});
   }
   
 function remove(id) {
