@@ -31,7 +31,7 @@ function findById(id) {
 function update(id, changes) {
     return db('strains')
       .where({ id })
-      .update(changes);
+      .update(changes,['*']);
   }
   
 function remove(id) {
