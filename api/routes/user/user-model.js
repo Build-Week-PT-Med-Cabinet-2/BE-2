@@ -9,11 +9,12 @@ module.exports = {
     remove
 }
 
-async function add(user) {
+ function add(user) {
     
-    const [id] = await db('users').insert(user);
+     db('users').insert(user)
+        .then(user => findById(user.id))
   
-    return findById(id);
+    
   }
 
 function find() {

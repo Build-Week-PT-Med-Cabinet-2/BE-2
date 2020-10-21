@@ -19,6 +19,7 @@ const genToken = (user) => {
     let user =req.body;
     const hash = bcrypt.hashSync(user.password,10)
       User.add({
+        ...user,
         username:user.username,
         password: hash
       })
