@@ -11,9 +11,9 @@ module.exports = {
 
 async function add(strain) {
     
-    const [id] = await db('strains').returning('user_id').insert(strain);
+    const [user_id] = await db('strains').returning('user_id').insert(strain);
   
-    return findById(id);
+    return findById(user_id);
   }
 
 function find() {
