@@ -35,8 +35,8 @@ function findById(id) {
 function update(id, changes) {
      return db('users')
       .where({ id })
-      .update(changes)
-      .returning('id','username','first_name','last_name','email');
+      .update(changes,['*'])
+      ;
   }
   
 function remove(id) {
