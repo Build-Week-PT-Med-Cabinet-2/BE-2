@@ -20,7 +20,7 @@ router.post('/', (req, res) =>{
 
 router.put('/:id', (req, res) => {
     strains.update(req.params.id,req.body)
-        .then(response => res.status(200).json(response))
+        .then(response => res.status(200).json(response[0]))
         .catch(err => res.status(500).json({error: err.message}))
 })
 
