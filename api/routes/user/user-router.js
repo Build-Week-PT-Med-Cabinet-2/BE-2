@@ -23,7 +23,7 @@ router.put('/',(req,res)=> {
     }
     else{
         user.update(id, req.body)
-        .then(success => res.status(200).json(success))
+        .then(success => res.status(200).json(success[0]))
         .catch(err => res.status(500).json({error: err.message}))
     }
 })
