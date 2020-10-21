@@ -10,9 +10,12 @@ module.exports = {
 }
 
  function add(user) {
-    
-     return db('users').insert(user)
-        .then(user => findById(user.id))
+    const [id] = await db('users').insert(user);
+  
+    return findById(id);
+  
+    //  return db('users').insert(user)
+    //     .then(user => findById(user.id))
   
     
   }
