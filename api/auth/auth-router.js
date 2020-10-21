@@ -24,7 +24,7 @@ const genToken = (user) => {
         password: hash
       })
       .then(success => {
-        const token = genToken(success)
+        // const token = genToken(success)
         res.status(200).json(success)
       })
       .catch(error => res.status(500).json({error_name: error, error: error.message}))
