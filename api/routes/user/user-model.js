@@ -26,7 +26,7 @@ function findBy(filter) {
 }
 
 function findById(id) {
-    return db('users').where({id});
+    return db('users').where(id);
 }
 
 function update(id, changes) {
