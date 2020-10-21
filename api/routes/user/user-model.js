@@ -36,8 +36,7 @@ function update(id, changes) {
      return db('users')
       .where({ id })
       .update(changes)
-      .returning('users')
-      .where({id});
+      .returning('id','username','first_name','last_name','email');
   }
   
 function remove(id) {
