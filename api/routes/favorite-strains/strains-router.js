@@ -13,9 +13,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) =>{ 
     let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid})
+
     strains.add(newBody)
         .then( response => res.status(200).json(response))
-        .catch(err => res.status(500).json({error: err.message}))
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: err.message})
+        })
 })
 
 router.put('/:id', (req, res) => {
