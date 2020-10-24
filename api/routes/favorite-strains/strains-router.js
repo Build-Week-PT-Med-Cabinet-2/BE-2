@@ -19,7 +19,7 @@ router.post('/', (req, res) =>{
         .reduce((obj,key) => {
             return {
                 ...obj,
-                [key]: raw[key]
+                [key]: newBody[key]
             }
         })
     strains.add(filtered)
