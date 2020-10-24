@@ -11,7 +11,7 @@ function filter (req) {
         .reduce((obj,key) => {
             return {
                 ...obj,
-                [key]: newBody[key]
+                [key]: req.body[key]
             }
         })
         console.log(filtered)
