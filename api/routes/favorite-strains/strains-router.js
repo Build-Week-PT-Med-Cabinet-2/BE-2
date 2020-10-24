@@ -4,15 +4,7 @@ const strains = require('./strains-model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-router.get('/', (req, res) => {
-    let id = req.decodedJwt.userid
-    strains.findById(id)
-        .then(response => res.status(200).json(response))
-        .catch(err=> res.status(500).json({error: err.message}))
-})
-
-router.post('/', (req, res) =>{ 
-    
+function filter (req) {
     const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type']
     let filtered = Object.keys(req.body)
         .filter(key => allowed.includes(key))
@@ -22,7 +14,18 @@ router.post('/', (req, res) =>{
                 [key]: newBody[key]
             }
         })
-        let newBody = Object.assign(filtered,{'user_id': req.decodedJwt.userid})
+        console.log(filtered)
+        return filtered
+}
+router.get('/', (req, res) => {
+    let id = req.decodedJwt.userid
+    strains.findById(id)
+        .then(response => res.status(200).json(response))
+        .catch(err=> res.status(500).json({error: err.message}))
+})
+
+router.post('/', (req, res) =>{ 
+        let newBody = Object.assign(filter(req),{'user_id': req.decodedJwt.userid})
     strains.add(newBody)
         .then( response => res.status(200).json(response))
         .catch(err => {
