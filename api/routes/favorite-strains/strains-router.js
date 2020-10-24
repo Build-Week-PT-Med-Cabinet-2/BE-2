@@ -12,9 +12,17 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) =>{ 
-    let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid,'Database_id': req.body.id})
-
-    strains.add(newBody)
+    let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid})
+    const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type','user_id']
+    const filtered = Object.keys(newBody)
+        .filter(key => allowed.includes(key))
+        .reduce((obj,key) => {
+            return {
+                ...obj,
+                [key]: raw[key]
+            }
+        })
+    strains.add(filtered)
         .then( response => res.status(200).json(response))
         .catch(err => {
             console.log(err)

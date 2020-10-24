@@ -6,13 +6,8 @@ exports.up = function(knex) {
     strains
         .string('Strain',64)
             .notNullable()
-    strains.integer('Database_id')
     strains
         .string('Ailment')
-    strains
-        .integer('Unnamed')
-    strains
-        .integer('fitness')
     strains
         .string('Type', 64)
             .notNullable();
