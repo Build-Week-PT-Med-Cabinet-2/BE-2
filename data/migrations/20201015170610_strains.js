@@ -7,6 +7,8 @@ exports.up = function(knex) {
         .string('Strain',64)
             .notNullable()
     strains
+        .string('Ailment')
+    strains
         .string('Type', 64)
             .notNullable();
     strains
