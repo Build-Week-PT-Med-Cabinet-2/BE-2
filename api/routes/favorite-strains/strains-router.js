@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     let id = req.decodedJwt.userid
     strains.findById(id)
         .then(response => res.status(200).json(response))
-        .catch(res.status(500).json({error: err.message}))
+        .catch(err=> res.status(500).json({error: err.message}))
 })
 
 router.post('/', (req, res) =>{ 
