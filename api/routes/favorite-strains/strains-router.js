@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) =>{ 
     let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid})
     const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type','user_id']
-    const filtered = Object.keys(newBody)
+    let filtered = Object.keys(newBody)
         .filter(key => allowed.includes(key))
         .reduce((obj,key) => {
             return {
