@@ -4,19 +4,19 @@ const strains = require('./strains-model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-function filter (req) {
-    const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type']
-    let filtered = Object.keys(req.body)
-        .filter(key => allowed.includes(key))
-        .reduce((obj,key) => {
-            return {
-                ...obj,
-                [key]: req.body[key]
-            }
-        })
-        console.log(filtered)
-        return filtered
-}
+// function filter (req) {
+//     const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type']
+//     let filtered = Object.keys(req.body)
+//         .filter(key => allowed.includes(key))
+//         .reduce((obj,key) => {
+//             return {
+//                 ...obj,
+//                 [key]: req.body[key]
+//             }
+//         })
+//         console.log(filtered)
+//         return filtered
+// }
 router.get('/', (req, res) => {
     let id = req.decodedJwt.userid
     strains.findById(id)
