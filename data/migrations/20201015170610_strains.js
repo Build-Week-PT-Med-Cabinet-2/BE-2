@@ -4,24 +4,23 @@ exports.up = function(knex) {
     strains
         .increments()
     strains
-        .string('strain',64)
-            .unique()
+        .string('Strain',64)
+            .notNullable()
+    strains
+        .string('Type', 64)
             .notNullable();
     strains
-        .string('type', 64)
-            .notNullable();
+        .integer('Rating');
     strains
-        .integer('raiting');
+        .string('Effects_x',128)
     strains
-        .string('effects')
-            .notNullable();
+        .string('Effects_y',128)
     strains
-        .string('flavor')
-            .notNullable();
+        .string('Flavor')
     strains 
-        .text('description')
-            .notNullable();    
-            
+        .text('Description')   
+    strains
+         .string('Image_Url')   
     strains
         .integer('user_id')
         .unsigned()
@@ -30,7 +29,6 @@ exports.up = function(knex) {
             .inTable("users")
             .onDelete("CASCADE")
             .onUpdate("CASCADE");        
-
   })
 };
 
