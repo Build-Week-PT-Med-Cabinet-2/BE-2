@@ -8,11 +8,10 @@ function filter (obj) {
     const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type','user_id']
     let filtered = Object.keys(obj)
         .filter(key => allowed.includes(key))
-        .reduce((obj,key) => {
-            return {
-                ...obj,
-                [key]: req.body[key]
-            }
+        .reduce((obj, key) => {
+            obj[key] = obj[key];
+            return obj;
+          }, {});
         })
         console.log(filtered)
         return filtered
