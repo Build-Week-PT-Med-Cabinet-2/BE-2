@@ -12,7 +12,7 @@ function filter (obj) {
             obj[key] = obj[key];
             return obj;
           }, {});
-        })
+        
         console.log(filtered)
         return filtered
 }
