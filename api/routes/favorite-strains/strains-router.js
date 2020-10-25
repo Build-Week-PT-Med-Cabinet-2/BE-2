@@ -28,7 +28,7 @@ router.post('/', (req, res) =>{
         let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid})
         delete newBody['Unnamed']
         delete newBody['id']
-        delete newbody['fitness']
+        delete newBody['fitness']
         console.log(newBody)
     strains.add(newBody)
         .then( response => res.status(200).json(response))
