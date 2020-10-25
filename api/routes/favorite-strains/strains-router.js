@@ -4,12 +4,12 @@ const strains = require('./strains-model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-function filter (obj) {
+function filter (item) {
     const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type','user_id']
-    let filtered = Object.keys(obj)
+    let filtered = Object.keys(item)
         .filter(key => allowed.includes(key))
         .reduce((obj, key) => {
-            obj[key] = obj[key];
+            obj[key] = item[key];
             return obj;
           }, {})
         console.log(filtered)
