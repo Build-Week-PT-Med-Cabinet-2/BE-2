@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
 function filter (item) {
-    const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type','user_id']
+    const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type']
     let filtered = Object.keys(item)
         .filter(key => allowed.includes(key))
         .reduce((obj, key) => {
@@ -24,15 +24,16 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) =>{ 
-        let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid})
+        let firstBody = filter(req.body)
+        let newBody = Object.assign(firstBody,{'user_id': req.decodedJwt.userid})
         // delete newBody.Unnamed;
         // delete newBody.id;
         // delete newBody.fitness;
     
        
-        let finalBody = filter(newBody)
-        console.log(finalBody)
-    strains.add(finalBody)
+        
+        console.log(newBody)
+    strains.add(newBody)
         .then( response => res.status(200).json(response))
         .catch(err => {
             console.log(err)
