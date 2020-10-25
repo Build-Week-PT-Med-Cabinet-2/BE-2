@@ -4,19 +4,19 @@ const strains = require('./strains-model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-// function filter (req) {
-//     const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type']
-//     let filtered = Object.keys(req.body)
-//         .filter(key => allowed.includes(key))
-//         .reduce((obj,key) => {
-//             return {
-//                 ...obj,
-//                 [key]: req.body[key]
-//             }
-//         })
-//         console.log(filtered)
-//         return filtered
-// }
+function filter (obj) {
+    const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Rating','Strain','Type','user_id']
+    let filtered = Object.keys(obj)
+        .filter(key => allowed.includes(key))
+        .reduce((obj,key) => {
+            return {
+                ...obj,
+                [key]: req.body[key]
+            }
+        })
+        console.log(filtered)
+        return filtered
+}
 router.get('/', (req, res) => {
     let id = req.decodedJwt.userid
     strains.findById(id)
@@ -26,11 +26,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) =>{ 
         let newBody = Object.assign(req.body,{'user_id': req.decodedJwt.userid})
-        delete newBody.Unnamed;
-        delete newBody.id;
-        delete newBody.fitness;
-        console.log(newBody)
-        let finalBody = newBody
+        // delete newBody.Unnamed;
+        // delete newBody.id;
+        // delete newBody.fitness;
+    
+       
+        let finalBody = filter(newBody)
+        console.log(finalBody)
     strains.add(finalBody)
         .then( response => res.status(200).json(response))
         .catch(err => {
