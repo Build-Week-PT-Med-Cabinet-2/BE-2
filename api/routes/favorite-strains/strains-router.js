@@ -9,12 +9,13 @@ function filter (obj) {
     let filtered = Object.keys(obj)
         .filter(key => allowed.includes(key))
         .reduce((obj, key) => {
-            obj[key] = raw[key];
+            obj[key] = obj[key];
             return obj;
           }, {})
         console.log(filtered)
         return filtered 
 }
+
 router.get('/', (req, res) => {
     let id = req.decodedJwt.userid
     strains.findById(id)
