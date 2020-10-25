@@ -26,12 +26,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) =>{ 
         let firstBody = filter(req.body)
         let newBody = Object.assign(firstBody,{'user_id': req.decodedJwt.userid})
-        // delete newBody.Unnamed;
-        // delete newBody.id;
-        // delete newBody.fitness;
-    
-       
-        
         console.log(newBody)
     strains.add(newBody)
         .then( response => res.status(200).json(response))
@@ -42,6 +36,7 @@ router.post('/', (req, res) =>{
 })
 
 router.put('/:id', (req, res) => {
+    console.log("PUT REQUEST",req.body)
     strains.update(req.params.id,req.body)
         .then(response => res.status(200).json(response[0]))
         .catch(err => res.status(500).json({error: err.message}))
