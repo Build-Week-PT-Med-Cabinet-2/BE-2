@@ -10,14 +10,9 @@ module.exports = {
 }
 
  async function add(user) {
-    const [id] = await db('users').returning('id').insert(user);
+    const [id] = await db('users').insert(user,['*']);
   
-    return findById(id);
-  
-    //  return db('users').insert(user)
-    //     .then(user => findById(user.id))
-  
-    
+    return findById(id); 
   }
 
 function find() {

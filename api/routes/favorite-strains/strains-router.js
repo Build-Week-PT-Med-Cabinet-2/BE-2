@@ -3,18 +3,8 @@ const router = express.Router()
 const strains = require('./strains-model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const filter = require('../../helpers/reqFilter')
 
-function filter (item) {
-    const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Strain','Type']
-    let filtered = Object.keys(item)
-        .filter(key => allowed.includes(key))
-        .reduce((obj, key) => {
-            obj[key] = item[key];
-            return obj;
-          }, {})
-        console.log(filtered)
-        return filtered 
-}
 
 router.get('/', (req, res) => {
     let id = req.decodedJwt.userid
