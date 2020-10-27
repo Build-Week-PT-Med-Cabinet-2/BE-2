@@ -1,4 +1,4 @@
-function filter (item) {
+module.exports = (item) => {
     const allowed = ['Ailment','Description','Effects_x','Effects_y','Flavor','Strain','Type']
     let filtered = Object.keys(item)
         .filter(key => allowed.includes(key))
@@ -10,4 +10,3 @@ function filter (item) {
         return filtered 
 }
 
-exports.filter = filter
